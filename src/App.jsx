@@ -130,7 +130,7 @@ function App() {
     <div className="app">
       {isLoadingInitial && <LoadingSpinner message="Fetching Pokémon..." />}
 
-      <Heade
+      <Header
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         filterType={filterType}
