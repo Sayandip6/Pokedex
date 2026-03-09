@@ -1,10 +1,13 @@
 {
+  "homepage": "https://Sayandip6.github.io/Pokedex",      
   "name": "pokemon-pokedex-app",
   "version": "1.0.0",
   "description": "Interactive Pokédex web application using PokeAPI",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "vite build",
     "preview": "vite preview"
   },
