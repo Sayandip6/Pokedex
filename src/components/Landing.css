@@ -1,0 +1,131 @@
+.landing {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  transition: opacity 0.7s, transform 0.7s;
+}
+
+.landing.exit {
+  opacity: 0;
+  transform: scale(1.07);
+  pointer-events: none;
+}
+
+.poke-ball {
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  border: 5px solid #ccc;
+  background: linear-gradient(180deg, var(--red) 50%, #ccc 50%);
+  position: relative;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 50px var(--glow), 0 0 100px var(--glow);
+  animation: spin 5s linear infinite, pulse 2.5s ease-in-out infinite;
+}
+
+.poke-ball::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--surf);
+  border: 5px solid #ccc;
+  z-index: 1;
+}
+
+.poke-ball::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: #ccc;
+  transform: translateY(-50%);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 50px var(--glow), 0 0 100px var(--glow);
+  }
+  50% {
+    box-shadow: 0 0 80px var(--glow), 0 0 160px var(--glow);
+  }
+}
+
+.poke-ball-inner {
+  position: absolute;
+  inset: 5px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+}
+
+.landing-title {
+  font-size: clamp(3.5rem, 9vw, 6.5rem);
+  font-weight: 900;
+  letter-spacing: -2px;
+  background: linear-gradient(130deg, var(--red), var(--orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0;
+}
+
+.landing-subtitle {
+  color: var(--dim);
+  font-size: 0.9rem;
+  margin: 1rem 0 2.8rem 0;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.enter-btn {
+  padding: 0.85rem 3rem;
+  background: transparent;
+  border: 2px solid var(--red);
+  color: var(--red);
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s;
+}
+
+.enter-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--red);
+  transform: translateX(-101%);
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.enter-btn:hover {
+  color: var(--bg);
+}
+
+.enter-btn:hover::before {
+  transform: translateX(0);
+}

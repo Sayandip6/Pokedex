@@ -1,0 +1,137 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(7, 7, 15, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--bdr);
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  background: linear-gradient(130deg, var(--red), var(--orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.search-bar {
+  flex: 1;
+  min-width: 180px;
+  max-width: 440px;
+  display: flex;
+  align-items: center;
+  background: var(--surf2);
+  border: 1px solid var(--bdr);
+  border-radius: 4px;
+  padding: 0 0.85rem;
+  transition: border-color 0.2s;
+}
+
+.search-bar:focus-within {
+  border-color: var(--red);
+}
+
+.search-icon {
+  color: var(--dim);
+  margin-right: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.search-bar input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.9rem;
+  padding: 0.65rem 0;
+}
+
+.search-bar input::placeholder {
+  color: var(--dim);
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+  color: var(--dim);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.search-bar button:hover {
+  color: var(--text);
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--bdr);
+  background: transparent;
+  color: var(--dim);
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.filter-tab:hover:not(.active) {
+  border-color: var(--dim);
+  color: var(--text);
+}
+
+.filter-tab.active {
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(230, 57, 70, 0.1);
+}
+
+.header-count {
+  color: var(--dim);
+  font-size: 0.68rem;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0.75rem 1rem;
+  }
+
+  .search-bar {
+    max-width: 300px;
+  }
+
+  .header-count {
+    margin-left: 0;
+    width: 100%;
+  }
+}
