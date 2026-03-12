@@ -60,7 +60,7 @@ function PokemonModal({ pokemon, onClose, onPrevious, onNext, hasPrevious, hasNe
     fetchDetail()
   }, [pokemon.id])
 
-  // Handle keyboard navigation
+  //keyboard 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowRight' && hasNext) onNext()
@@ -86,7 +86,7 @@ function PokemonModal({ pokemon, onClose, onPrevious, onNext, hasPrevious, hasNe
   return (
     <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div className="modal-content">
-        {/* Header */}
+        
         <div className="modal-header">
           <div>
             <div className="modal-id">#{padId(pokemon.id)}</div>
@@ -122,9 +122,9 @@ function PokemonModal({ pokemon, onClose, onPrevious, onNext, hasPrevious, hasNe
           </div>
         </div>
 
-        {/* Body */}
+        
         <div className="modal-body">
-          {/* Main Front Sprite */}
+          
           <div className="main-sprite-section">
             <img
               className="main-sprite"
@@ -136,13 +136,13 @@ function PokemonModal({ pokemon, onClose, onPrevious, onNext, hasPrevious, hasNe
             />
           </div>
 
-          {/* Cry Audio Player */}
+          
           <div className="section">
             <h3 className="section-title">Pokémon Cry</h3>
             <AudioPlayer src={getCryUrl(pokemon.id)} pokemonName={pokemon.name} />
           </div>
 
-          {/* Other Sprites */}
+          
           <div className="section">
             <h3 className="section-title">Other Sprites</h3>
             <div className="sprites-grid">
@@ -159,7 +159,7 @@ function PokemonModal({ pokemon, onClose, onPrevious, onNext, hasPrevious, hasNe
 
           {detail && (
             <>
-              {/* Stats */}
+              
               <div className="two-col">
                 <div className="info-box">
                   <h3 className="section-title">
@@ -170,7 +170,7 @@ function PokemonModal({ pokemon, onClose, onPrevious, onNext, hasPrevious, hasNe
                   ))}
                 </div>
 
-                {/* Info */}
+                
                 <div className="info-box">
                   <h3 className="section-title">Info</h3>
                   <div className="info-row">
@@ -192,7 +192,7 @@ function PokemonModal({ pokemon, onClose, onPrevious, onNext, hasPrevious, hasNe
                 </div>
               </div>
 
-              {/* Abilities */}
+              
               <div className="section">
                 <h3 className="section-title">Abilities</h3>
                 <div className="pills">
@@ -207,7 +207,7 @@ function PokemonModal({ pokemon, onClose, onPrevious, onNext, hasPrevious, hasNe
                 </div>
               </div>
 
-              {/* Moves */}
+              
               <div className="section">
                 <h3 className="section-title">Moves (First 30)</h3>
                 <div className="pills">

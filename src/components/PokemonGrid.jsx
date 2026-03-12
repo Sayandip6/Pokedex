@@ -17,7 +17,7 @@ function PokemonGrid({ pokemonList, onCardClick, isLoading, groupByGeneration = 
   }
 
   if (pokemonList.length === 0 && isLoading) {
-    return null // Loading spinner is shown in App.jsx
+    return null 
   }
 
   if (groupByGeneration) {

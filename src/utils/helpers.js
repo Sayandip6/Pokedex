@@ -38,10 +38,10 @@ export const TYPE_COLORS = {
   flying: '#7090C0',
   poison: '#A040A0',
   ground: '#C8A040',
-  rock: '#B8A038',
+  rock: '#85742c',
   bug: '#A8B820',
   ghost: '#705898',
-  steel: '#9898B0',
+  steel: '#9292a3',
 }
 
 // Get type color
