@@ -31,7 +31,7 @@ const getCry = (id) =>
 
 const pad = (n) => String(n).padStart(4, "0");
 
-// ─── Small components ─────────────────────────────────────────────────────────
+// Small components
 function TypeBadge({ type }) {
   return <span className="tb" style={{ background: TYPE_COLORS[type] || "#555" }}>{type}</span>;
 }
@@ -59,7 +59,7 @@ function StatRow({ name, value }) {
   );
 }
 
-// ─── Modal ────────────────────────────────────────────────────────────────────
+// Modal 
 function Modal({ idx, list, onNav, onClose }) {
   const pk = list[idx];
   const [detail, setDetail] = useState(null);
@@ -110,7 +110,7 @@ function Modal({ idx, list, onNav, onClose }) {
         </div>
 
         <div className="mbody">
-          {/* Sprites — loaded directly as <img> tags, bypasses sandbox restriction */}
+          
           <div className="slbl">Sprites</div>
           <div className="sprrow">
             <SpriteBox src={sp.front}       label="Front" />
@@ -122,7 +122,7 @@ function Modal({ idx, list, onNav, onClose }) {
             <SpriteBox src={sp.shinyFemale} label="♀ Shiny" />
           </div>
 
-          {/* Cry — loaded as <audio> src, also bypasses restriction */}
+          
           <div className="crywrap">
             <div className="slbl">Pokémon Cry</div>
             <audio ref={audioRef} controls key={pk.id}>
@@ -130,7 +130,7 @@ function Modal({ idx, list, onNav, onClose }) {
             </audio>
           </div>
 
-          {loading && <div className="loading-msg">FETCHING DATA VIA CLAUDE PROXY…</div>}
+          {loading && <div className="loading-msg">FETCHING DATA</div>}
 
           {detail && (
             <>
@@ -178,7 +178,7 @@ function Modal({ idx, list, onNav, onClose }) {
   );
 }
 
-// ─── Card ─────────────────────────────────────────────────────────────────────
+// Card 
 function PCard({ p, onClick }) {
   const cc = TYPE_COLORS[p.types[0]] || "#e63946";
   return (
@@ -191,7 +191,7 @@ function PCard({ p, onClick }) {
   );
 }
 
-// ─── Landing ──────────────────────────────────────────────────────────────────
+//  Landing 
 function Landing({ onEnter }) {
   const [bye, setBye] = useState(false);
   const go = () => { setBye(true); setTimeout(onEnter, 720); };
@@ -205,7 +205,7 @@ function Landing({ onEnter }) {
   );
 }
 
-// ─── App ──────────────────────────────────────────────────────────────────────
+//  App 
 export default function App() {
   const [phase, setPhase]     = useState("land");
   const [pokemon, setPokemon] = useState([]);
@@ -215,7 +215,7 @@ export default function App() {
   const [modalIdx, setModalIdx] = useState(null);
   const [status, setStatus]   = useState("");
 
-  // Load all gens progressively — each pokemon entry fetched through Anthropic proxy
+  // Load all gens 
   const loadAll = useCallback(async () => {
     for (const gen of GENERATIONS) {
       const [min, max] = GEN_RANGES[gen];

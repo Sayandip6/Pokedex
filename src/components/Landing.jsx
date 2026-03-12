@@ -14,7 +14,7 @@ function Landing({ onEnter }) {
       <div className="poke-ball">
         <div className="poke-ball-inner" />
       </div>
-      <h1 className="landing-title">Pokédex</h1>
+      <h1 className="landing-title"> Arashi - Pokédex</h1>
       <p className="landing-subtitle">All Generations · All Data</p>
       <button className="enter-btn" onClick={handleEnter}>
         <span>Enter</span>
