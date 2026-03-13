@@ -1,5 +1,6 @@
 import React from 'react'
 import './Header.css'
+import GitHubLink from './GitHubLink'
 
 function Header({ 
   searchQuery, 
@@ -41,6 +42,8 @@ function Header({
       </div>
 
       <span className="header-count">{loadedCount} / {totalCount}</span>
+      
+      <GitHubLink />
     </header>
   )
 }

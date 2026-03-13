@@ -1,0 +1,19 @@
+.github-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: var(--dim);
+  transition: all 0.3s ease;
+}
+
+.github-link:hover {
+  color: var(--text);
+  filter: drop-shadow(0 0 8px rgba(230, 57, 70, 0.4));
+}
+
+.github-icon {
+  width: 24px;
+  height: 24px;
+}
