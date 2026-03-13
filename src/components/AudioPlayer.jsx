@@ -1,11 +1,19 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import './AudioPlayer.css'
 
 function AudioPlayer({ src, pokemonName }) {
   const audioRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [volume, setVolume] = useState(1)
-  const [showVolume, setShowVolume] = useState(false)
+  const [volume, setVolume] = useState(() => {
+    const saved = sessionStorage.getItem('pokemonVolume')
+    return saved ? parseFloat(saved) : 1
+  })
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume
+    }
+  }, [volume])
 
   const handlePlayPause = () => {
     if (audioRef.current) {
@@ -22,9 +30,7 @@ function AudioPlayer({ src, pokemonName }) {
   const handleVolumeChange = (e) => {
     const newVolume = parseFloat(e.target.value)
     setVolume(newVolume)
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume
-    }
+    sessionStorage.setItem('pokemonVolume', newVolume)
   }
 
   const handleEnded = () => {
@@ -32,11 +38,7 @@ function AudioPlayer({ src, pokemonName }) {
   }
 
   return (
-    <div
-      className="audio-player"
-      onMouseEnter={() => setShowVolume(true)}
-      onMouseLeave={() => setShowVolume(false)}
-    >
+    <div className="audio-player">
       <button
         className={`play-button ${isPlaying ? 'playing' : ''}`}
         onClick={handlePlayPause}
@@ -54,21 +56,19 @@ function AudioPlayer({ src, pokemonName }) {
         )}
       </button>
 
-      {showVolume && (
-        <div className="volume-control">
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.1"
-            value={volume}
-            onChange={handleVolumeChange}
-            className="volume-slider"
-            title="Volume"
-          />
-          <span className="volume-label">{Math.round(volume * 100)}%</span>
-        </div>
-      )}
+      <div className="volume-control">
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.1"
+          value={volume}
+          onChange={handleVolumeChange}
+          className="volume-slider"
+          title="Volume"
+        />
+        <span className="volume-label">{Math.round(volume * 100)}%</span>
+      </div>
 
       <audio
         ref={audioRef}
