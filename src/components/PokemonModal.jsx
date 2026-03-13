@@ -41,8 +41,10 @@ function StatRow({ name, value }) {
 function PokemonModal({ pokemon, onClose, onPrevious, onNext, hasPrevious, hasNext }) {
   const [detail, setDetail] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [transitioning, setTransitioning] = useState(false)
 
   useEffect(() => {
+    setTransitioning(true)
     setDetail(null)
     setLoading(true)
     
@@ -54,6 +56,7 @@ function PokemonModal({ pokemon, onClose, onPrevious, onNext, hasPrevious, hasNe
         console.error('Error fetching pokemon detail:', error)
       } finally {
         setLoading(false)
+        setTransitioning(false)
       }
     }
 
@@ -85,7 +88,7 @@ function PokemonModal({ pokemon, onClose, onPrevious, onNext, hasPrevious, hasNe
 
   return (
     <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
-      <div className="modal-content">
+      <div className="modal-content" data-transitioning={transitioning}>
         
         <div className="modal-header">
           <div>
